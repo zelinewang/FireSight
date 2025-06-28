@@ -414,34 +414,52 @@ function clearLayers() {
 
 // Render hotspots on map
 function renderHotspots() {
-    hotspotData.forEach(feature => {
+    hotspotData.forEach((feature, index) => {
         const props = feature.properties;
         const coords = feature.geometry.coordinates;
         
-        // 🔥 Custom flame icon for hotspot marker
+        // Create a professional-looking fire marker
+        const intensity = getIntensityLevel(props.brightness, props.confidence);
         const fireIcon = L.divIcon({
-            className: 'fire-icon',
-            html: '🔥',
-            iconSize: [28, 28],
-            iconAnchor: [14, 14]
+            className: `fire-marker fire-${intensity}`,
+            html: `
+                <div class="fire-marker-inner">
+                    <div class="fire-pulse"></div>
+                    <div class="fire-icon">🔥</div>
+                </div>
+            `,
+            iconSize: [32, 32],
+            iconAnchor: [16, 16]
         });
         
         const leafletMarker = L.marker([coords[1], coords[0]], {
             icon: fireIcon,
-            title: 'Click for details'
+            title: `Wildfire ${index + 1} - Click for details`,
+            zIndexOffset: 1000
         }).addTo(leafletMap);
         
-        // Add interaction
+        // Add smooth hover effects
         leafletMarker.on('click', () => showInfoPanel(props));
         leafletMarker.on('mouseover', function() {
-            this._icon.style.transform = 'scale(1.3)';
+            this._icon.classList.add('fire-hover');
         });
         leafletMarker.on('mouseout', function() {
-            this._icon.style.transform = 'scale(1)';
+            this._icon.classList.remove('fire-hover');
         });
         
         leafletLayers.push(leafletMarker);
     });
+}
+
+// Get intensity level based on brightness and confidence
+function getIntensityLevel(brightness, confidence) {
+    if (brightness > 340 || confidence === 'high' || confidence === 'h') {
+        return 'high';
+    } else if (brightness > 310 || confidence === 'nominal' || confidence === 'n') {
+        return 'medium';
+    } else {
+        return 'low';
+    }
 }
 
 // Render spread prediction rings
@@ -472,42 +490,63 @@ function showInfoPanel(properties) {
     const panel = document.getElementById('infoPanel');
     const content = document.getElementById('infoPanelContent');
     
-    // Format the content
+    // Format the content with user-friendly language
+    const intensityText = getIntensityLevel(properties.brightness, properties.confidence);
+    const intensityColor = intensityText === 'high' ? '#ff3d00' : 
+                          intensityText === 'medium' ? '#ff9800' : '#ffc107';
+    
     content.innerHTML = `
-        <div class="info-item">
-            <div class="info-label">Location</div>
-            <div class="info-value">${properties.lat.toFixed(3)}°, ${properties.lon.toFixed(3)}°</div>
+        <div class="info-header">
+            <div class="fire-status">
+                <span class="status-indicator" style="background: ${intensityColor}"></span>
+                <span class="status-text">${intensityText.toUpperCase()} INTENSITY</span>
+            </div>
         </div>
+        
         <div class="info-item">
-            <div class="info-label">Brightness Temperature</div>
-            <div class="info-value">${properties.brightness.toFixed(1)} K</div>
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+                <div class="info-label">Location</div>
+                <div class="info-value">${properties.lat.toFixed(3)}°, ${properties.lon.toFixed(3)}°</div>
+            </div>
         </div>
+        
         <div class="info-item">
-            <div class="info-label">Acquisition Time</div>
-            <div class="info-value">${formatDateTime(properties.acq_datetime)}</div>
+            <div class="info-icon">🌡️</div>
+            <div class="info-content">
+                <div class="info-label">Heat Level</div>
+                <div class="info-value">${properties.brightness.toFixed(0)}° Kelvin</div>
+            </div>
         </div>
+        
         <div class="info-item">
-            <div class="info-label">Confidence Level</div>
-            <div class="info-value">${properties.confidence}</div>
+            <div class="info-icon">🕒</div>
+            <div class="info-content">
+                <div class="info-label">Detected At</div>
+                <div class="info-value">${formatDateTime(properties.acq_datetime)}</div>
+            </div>
         </div>
+        
         <div class="info-item">
-            <div class="info-label">Satellite</div>
-            <div class="info-value">${properties.satellite}</div>
+            <div class="info-icon">🛰️</div>
+            <div class="info-content">
+                <div class="info-label">Spotted By</div>
+                <div class="info-value">${properties.satellite} Satellite</div>
+            </div>
         </div>
+        
         <div class="info-item">
-            <div class="info-label">Predicted Spread (6h)</div>
-            <div class="info-value">${properties.spread_radius_km.toFixed(1)} km radius</div>
+            <div class="info-icon">📊</div>
+            <div class="info-content">
+                <div class="info-label">Predicted Spread</div>
+                <div class="info-value">${properties.spread_radius_km.toFixed(1)} km in 6 hours</div>
+            </div>
         </div>
-        <div class="info-item">
-            <button onclick="shareLocation(${properties.lat}, ${properties.lon})" style="
-                background: rgba(255,255,255,0.1);
-                border: 1px solid rgba(255,255,255,0.3);
-                color: white;
-                padding: 8px 16px;
-                border-radius: 4px;
-                cursor: pointer;
-                width: 100%;
-            ">📋 Share Location</button>
+        
+        <div class="info-actions">
+            <button class="share-btn" onclick="shareLocation(${properties.lat}, ${properties.lon})">
+                📋 Share Location
+            </button>
         </div>
     `;
     

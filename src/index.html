@@ -24,31 +24,36 @@
     <!-- User Guidance Panel -->
     <div id="guidancePanel" class="guidance-panel">
         <div class="guidance-content">
-            <h3>🔥 Welcome to FireSight!</h3>
-            <p><strong>Real-time wildfire tracking with NASA satellite data</strong></p>
-            <div class="guidance-steps">
-                <div class="step">
-                    <span class="step-number">1</span>
-                    <span class="step-text">Click red circles to see wildfire details</span>
-                </div>
-                <div class="step">
-                    <span class="step-number">2</span>
-                    <span class="step-text">Yellow circles show predicted spread areas</span>
-                </div>
-                <div class="step">
-                    <span class="step-number">3</span>
-                    <span class="step-text">Click "🔄 Update" for fresh satellite data</span>
+            <div class="welcome-header">
+                <h3>🔥 Welcome to FireSight</h3>
+                <p>Track active wildfires around the world</p>
+            </div>
+            <div class="how-to-use">
+                <h4>How to use:</h4>
+                <div class="simple-steps">
+                    <div class="step-item">
+                        <span class="step-icon">🔥</span>
+                        <span>Click fire icons to see details</span>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-icon">📍</span>
+                        <span>Orange circles show spread predictions</span>
+                    </div>
+                    <div class="step-item">
+                        <span class="step-icon">🔄</span>
+                        <span>Update for latest satellite data</span>
+                    </div>
                 </div>
             </div>
             <div class="guidance-region">
-                <label for="regionSelect">Region:</label>
+                <label for="regionSelect">Choose area to view:</label>
                 <select id="regionSelect">
-                    <option value="california">California</option>
-                    <option value="australia">Australia</option>
-                    <option value="global">Global</option>
+                    <option value="california">🇺🇸 California</option>
+                    <option value="australia">🇦🇺 Australia</option>
+                    <option value="global">🌍 Worldwide</option>
                 </select>
             </div>
-            <button class="close-guidance" onclick="closeGuidance()">Got it! ✓</button>
+            <button class="close-guidance" onclick="closeGuidance()">Start Exploring</button>
         </div>
     </div>
 
