@@ -141,8 +141,7 @@ async function loadLocalData() {
         // Try different data file paths for different deployment scenarios
         const dataPaths = [
             '../data/wildfires.geojson',                    // Local development
-            './data/wildfires.geojson',                     // Same directory structure
-            './demo-data.json'                              // Demo data for deployed site
+            './data/wildfires.geojson'                      // Same directory structure
         ];
         
         let data = null;
@@ -419,24 +418,26 @@ function renderHotspots() {
         const props = feature.properties;
         const coords = feature.geometry.coordinates;
         
-        // Add to Leaflet
-        const leafletMarker = L.circleMarker([coords[1], coords[0]], {
-            radius: 6,
-            fillColor: '#ff0000',
-            color: '#ffffff',
-            weight: 1,
-            opacity: 1,
-            fillOpacity: 0.8,
-            className: 'hotspot-marker'
+        // 🔥 Custom flame icon for hotspot marker
+        const fireIcon = L.divIcon({
+            className: 'fire-icon',
+            html: '🔥',
+            iconSize: [28, 28],
+            iconAnchor: [14, 14]
+        });
+        
+        const leafletMarker = L.marker([coords[1], coords[0]], {
+            icon: fireIcon,
+            title: 'Click for details'
         }).addTo(leafletMap);
         
         // Add interaction
         leafletMarker.on('click', () => showInfoPanel(props));
         leafletMarker.on('mouseover', function() {
-            this.setRadius(8);
+            this._icon.style.transform = 'scale(1.3)';
         });
         leafletMarker.on('mouseout', function() {
-            this.setRadius(6);
+            this._icon.style.transform = 'scale(1)';
         });
         
         leafletLayers.push(leafletMarker);
@@ -454,10 +455,12 @@ function renderSpreadRings() {
         // Add to Leaflet
         const leafletRing = L.circle([coords[1], coords[0]], {
             radius: radiusMeters,
-            fillColor: '#ffff00',
-            fillOpacity: 0.3,
-            color: '#ff0000',
-            weight: 1
+            fillColor: '#ff5722',
+            fillOpacity: 0.25,
+            color: '#ffab40',
+            weight: 2,
+            dashArray: '4 6',
+            className: 'prediction-ring'
         }).addTo(leafletMap);
         
         leafletLayers.push(leafletRing);
