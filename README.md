@@ -353,4 +353,39 @@ FireSight v1.1 successfully implements all requirements from DevDoc_v1.1.md with
 
 ---
 
-*Last updated: June 28, 2025 | Version 1.1 | Status: Production Ready* 
+*Last updated: June 28, 2025 | Version 1.1 | Status: Production Ready*
+
+## 🔥 Project Summary (v1.2 – June 2025)
+FireSight is a **zero-backend, fully serverless web application** that visualises active wildfires in real-time using NASA FIRMS satellite data and provides **6-hour spread predictions**.
+
+• **Frontend Only** – Pure HTML + CSS + Vanilla JS (Leaflet) served from a static host (Netlify/GitHub Pages).  
+• **On-Demand Data** – Browser fetches CSV files directly from NASA FIRMS via resilient multi-proxy CORS pipeline.  
+• **Wind-Aware Spread Model** – Simple empirical rule (brightness + wind speed) converted to radius (km) and rendered as orange prediction rings.  
+• **Graceful Fallback** – Demo dataset and helpful error banner when APIs are unavailable.  
+• **UX-First** – Guidance overlay, single-click refresh, mobile friendly, emoji fire markers with intensity glow.
+
+---
+
+## 🖼️ Updated Architecture
+See diagrams:
+* `diagrams/system.txt` – **System Architecture** (data flow from NASA → Browser)
+* `diagrams/fire_spread_predicition_model.txt` – **Prediction Model** (current & future)
+
+---
+
+## 🛤️ Road-Map & Future Development
+| Version | Focus | Key Upgrades |
+|---------|-------|--------------|
+| **v1.3** | Reliability | • Service Worker offline snapshot  • IndexedDB historical caching  • User selectable refresh interval |
+| **v1.4** | Data Quality | • Switch to FIRMS V2 JSON API  • Add NOAA real-time wind vectors  • GeoJSON optimisation w/ compression |
+| **v1.5** | Advanced Spread Model | • Integrate US Forest Service FARSITE / Prometheus API  • Direction-aware elliptical rings  • Dynamic colour gradient based on intensity |
+| **v2.0** | AI-Assistant | • Fine-tuned LLM agent to ingest weather + topography + satellite images  • Predict 3-, 6-, 12-, 24-hour spread  • Conversational "Ask FireSight" chat widget |
+| **v2.1** | Alerts & Mobile App | • Web-Push & SMS alerts on new hotspots  • PWA installable mobile app  • Offline leaflet tiles |
+
+Contributions welcome – see `docs/development/`.
+
+---
+
+## 🎞️ Demo Slide Deck
+A ready-to-present slide outline is available at `docs/FireSight_Pitch_Deck.md`.  
+It covers **Problem → Solution → Live Demo → Architecture → Road-map → Call-to-Action** and embeds the diagrams above. 

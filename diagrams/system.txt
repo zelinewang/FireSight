@@ -1,0 +1,22 @@
+           +----------------------+
+           |  NASA FIRMS CSV API  |  (MODIS / VIIRS)
+           +----------+-----------+
+                      |
+                      |  CSV (24h)
+          [1] Browser fetch via CORS proxy (corsproxy.io → allorigins.win → direct)
+                      |
+                      v
++-------------------------------+          +---------------------+
+|  Client (FireSight SPA)       |          | Open-Meteo API      |
+|  – index.html / app.js        | <------> |  (Wind speed)       |
+|  – Leaflet map                |          +---------------------+
+|  – Spread model (JS)          |
++-------------+-----------------+
+              |
+       GeoJSON features
+              |
+              v
+      Leaflet Markers + Circles
+              |
+              v
+   🔥  Interactive map in browser

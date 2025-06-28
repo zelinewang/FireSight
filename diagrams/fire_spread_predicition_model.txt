@@ -1,0 +1,18 @@
+graph LR
+    A["🔥 Hotspot<br/>Detection"] --> B["📊 Brightness<br/>Temperature (K)"]
+    C["💨 Wind Speed<br/>(Default: 25 km/h)"] --> D["🧮 Spread Model"]
+    B --> D
+    D --> E["📏 6-Hour Radius<br/>Prediction"]
+    
+    subgraph "Spread Model Formula"
+        F["Base Rate<br/>(0.5 km/h)"] --> G["Temperature<br/>Factor"]
+        G --> H["Wind<br/>Factor"]
+        H --> I["Spread Rate<br/>(km/h)"]
+        I --> J["6h × Rate<br/>= Radius"]
+    end
+    
+    E --> K["🟡 Yellow Ring<br/>Visualization"]
+    
+    style A fill:#FF6B6B
+    style E fill:#FFD93D
+    style K fill:#FFD93D
