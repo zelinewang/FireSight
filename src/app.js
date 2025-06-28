@@ -11,8 +11,12 @@ const NASA_FIRMS_ENDPOINTS = {
     viirs: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/viirs-i/csv/VNP14IMGTDL_NRT_Global_24h.csv'
 };
 
-// CORS Proxy for API calls
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+// CORS Proxy alternatives for API calls
+const CORS_PROXIES = [
+    'https://api.allorigins.win/raw?url=',
+    'https://corsproxy.io/?',
+    'https://cors-anywhere.herokuapp.com/'
+];
 
 // Regional bounds for filtering
 const REGION_BOUNDS = {
@@ -43,11 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set up event listeners
     setupEventListeners();
     
+    // Clear any old cached data to start fresh
+    localStorage.removeItem('firesight_cache');
+    
     // Show guidance panel for new users
     showGuidancePanel();
     
-    // Try to load local data first, then offer fresh data option
-    loadLocalData();
+    // Start with empty state - user needs to click Update for data
+    showEmptyState();
     
     debugLog('Initialization complete');
 });
@@ -196,22 +203,41 @@ async function fetchFreshData() {
         // Fetch MODIS data
         updateProgress(20, 'Fetching MODIS satellite data...');
         updateLoadingStatus('Fetching MODIS satellite data...');
-        const modisData = await fetchSatelliteData('modis');
-        if (modisData.length > 0) {
-            allHotspots = allHotspots.concat(modisData);
-            debugLog(`Found ${modisData.length} MODIS hotspots`);
+        try {
+            const modisData = await fetchSatelliteData('modis');
+            if (modisData.length > 0) {
+                allHotspots = allHotspots.concat(modisData);
+                debugLog(`Found ${modisData.length} MODIS hotspots`);
+                updateProgress(40, `Found ${modisData.length} MODIS hotspots`);
+            } else {
+                updateProgress(40, 'No MODIS data available');
+            }
+        } catch (error) {
+            debugLog(`MODIS fetch failed: ${error.message}`);
+            updateProgress(40, 'MODIS fetch failed - continuing...');
         }
-        updateProgress(40, `Found ${modisData.length} MODIS hotspots`);
         
         // Fetch VIIRS data
         updateProgress(45, 'Fetching VIIRS satellite data...');
         updateLoadingStatus('Fetching VIIRS satellite data...');
-        const viirsData = await fetchSatelliteData('viirs');
-        if (viirsData.length > 0) {
-            allHotspots = allHotspots.concat(viirsData);
-            debugLog(`Found ${viirsData.length} VIIRS hotspots`);
+        try {
+            const viirsData = await fetchSatelliteData('viirs');
+            if (viirsData.length > 0) {
+                allHotspots = allHotspots.concat(viirsData);
+                debugLog(`Found ${viirsData.length} VIIRS hotspots`);
+                updateProgress(60, `Found ${viirsData.length} VIIRS hotspots`);
+            } else {
+                updateProgress(60, 'No VIIRS data available');
+            }
+        } catch (error) {
+            debugLog(`VIIRS fetch failed: ${error.message}`);
+            updateProgress(60, 'VIIRS fetch failed - continuing...');
         }
-        updateProgress(60, `Found ${viirsData.length} VIIRS hotspots`);
+        
+        // Check if we got any data at all
+        if (allHotspots.length === 0) {
+            throw new Error('No wildfire data available from NASA satellites. This could be due to:\n• Network connectivity issues\n• NASA FIRMS API being temporarily down\n• No active wildfires in the selected region\n\nPlease try again in a few minutes.');
+        }
         
         // Filter by region and deduplicate
         updateProgress(65, 'Processing and filtering data...');
@@ -266,23 +292,48 @@ async function fetchFreshData() {
     }
 }
 
-// Fetch data from specific satellite
+// Fetch data from specific satellite with multiple CORS proxy fallbacks
 async function fetchSatelliteData(satellite) {
-    try {
-        const endpoint = NASA_FIRMS_ENDPOINTS[satellite];
-        const response = await fetch(CORS_PROXY + encodeURIComponent(endpoint));
-        
-        if (!response.ok) {
-            throw new Error(`${satellite.toUpperCase()} API returned ${response.status}`);
+    const endpoint = NASA_FIRMS_ENDPOINTS[satellite];
+    
+    // Try each CORS proxy until one works
+    for (let i = 0; i < CORS_PROXIES.length; i++) {
+        try {
+            const proxy = CORS_PROXIES[i];
+            debugLog(`Trying ${satellite.toUpperCase()} with proxy ${i + 1}/${CORS_PROXIES.length}`);
+            
+            const response = await fetch(proxy + encodeURIComponent(endpoint), {
+                headers: {
+                    'Accept': 'text/csv,text/plain,*/*'
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const csvText = await response.text();
+            
+            // Validate we got CSV data
+            if (!csvText || csvText.length < 100 || !csvText.includes('latitude')) {
+                throw new Error('Invalid or empty CSV data received');
+            }
+            
+            const features = parseCSVToGeoJSON(csvText, satellite);
+            debugLog(`Successfully fetched ${features.length} ${satellite.toUpperCase()} hotspots`);
+            return features;
+            
+        } catch (error) {
+            debugLog(`${satellite.toUpperCase()} proxy ${i + 1} failed: ${error.message}`);
+            
+            // If this was the last proxy, throw the error
+            if (i === CORS_PROXIES.length - 1) {
+                throw new Error(`All proxies failed for ${satellite.toUpperCase()}: ${error.message}`);
+            }
         }
-        
-        const csvText = await response.text();
-        return parseCSVToGeoJSON(csvText, satellite);
-        
-    } catch (error) {
-        debugLog(`${satellite.toUpperCase()} fetch failed: ${error.message}`);
-        return [];
     }
+    
+    return [];
 }
 
 // Parse CSV data to GeoJSON format

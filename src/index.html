@@ -70,9 +70,10 @@
     <!-- Empty State -->
     <div id="emptyState" class="empty-state" style="display: none;">
         <div class="empty-content">
-            <h2>No active hotspots found</h2>
-            <p>Try selecting a different region or click "🔄 Update" for fresh data</p>
-            <button onclick="loadData(true)">🔄 Get Fresh Data</button>
+            <div class="empty-icon">🔥</div>
+            <h2>Ready to Track Wildfires</h2>
+            <p>Click the <strong>🔄 Update</strong> button above to get the latest wildfire data from NASA satellites</p>
+            <button onclick="fetchFreshData()" class="get-data-btn">🛰️ Get Live Satellite Data</button>
         </div>
     </div>
 
