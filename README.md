@@ -44,29 +44,6 @@ python -m http.server 8000
 
 ---
 
-## 🎮 **How It Works (User Journey)**
-
-```mermaid
-graph LR
-    A[👤 User Opens App] --> B[🔥 Welcome Screen]
-    B --> C[🌍 Select Region]
-    C --> D[🔄 Click Update]
-    D --> E[🛰️ Fetch NASA Data]
-    E --> F[🗺️ View Fire Map]
-    F --> G[🖱️ Click Fire Icon]
-    G --> H[📊 Explore Details]
-    H --> I[📋 Share Location]
-```
-
-1. **🔥 Instant Welcome** - Friendly guidance panel explains everything
-2. **🌍 Choose Region** - California, Australia, or Global coverage
-3. **🔄 One-Click Data** - Fresh NASA satellite data in ~15 seconds
-4. **🖱️ Explore Fires** - Click any fire emoji for detailed information
-5. **📊 Rich Details** - Heat levels, satellite source, spread predictions
-6. **📱 Mobile Ready** - Works perfectly on phones and tablets
-
----
-
 ## 🏗️ **Technical Architecture**
 
 ### **🎯 Current Implementation (v1.0)**
