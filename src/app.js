@@ -517,12 +517,11 @@ function renderHotspots() {
         });
         
         leafletMarker.on('mouseover', function() {
-            this._icon.style.transform = 'scale(1.2)';
-            this._icon.style.filter = 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 87, 34, 0.8))';
+            this._icon.style.filter = 'brightness(1.4) drop-shadow(0 0 12px rgba(255, 87, 34, 1))';
+            this._icon.style.cursor = 'pointer';
         });
         
         leafletMarker.on('mouseout', function() {
-            this._icon.style.transform = 'scale(1)';
             this._icon.style.filter = `brightness(1) ${getIntensityFilter(intensity)}`;
         });
         
