@@ -138,18 +138,40 @@ function centerMapOnRegion(region) {
 // Try to load local data first
 async function loadLocalData() {
     try {
-        const response = await fetch('../data/wildfires.geojson');
-        if (response.ok) {
-            const data = await response.json();
-            hotspotData = data.features || [];
-            
-            if (hotspotData.length > 0) {
-                renderData();
-                updateTimestamp('Using cached data');
-                debugLog(`Loaded ${hotspotData.length} cached hotspots`);
-            } else {
-                showEmptyState();
+        // Try different data file paths for different deployment scenarios
+        const dataPaths = [
+            '../data/wildfires.geojson',                    // Local development
+            './data/wildfires.geojson',                     // Same directory structure
+            './demo-data.json'                              // Demo data for deployed site
+        ];
+        
+        let data = null;
+        for (const path of dataPaths) {
+            try {
+                const response = await fetch(path);
+                if (response.ok) {
+                    data = await response.json();
+                    break;
+                }
+            } catch (err) {
+                debugLog(`Failed to load from ${path}: ${err.message}`);
             }
+        }
+        
+        // Try local storage cache
+        if (!data) {
+            const cached = localStorage.getItem('firesight_cache');
+            if (cached) {
+                data = JSON.parse(cached);
+                debugLog('Loaded data from browser cache');
+            }
+        }
+        
+        if (data && data.features && data.features.length > 0) {
+            hotspotData = data.features;
+            renderData();
+            updateTimestamp('Using cached data - Click 🔄 Update for fresh data');
+            debugLog(`Loaded ${hotspotData.length} cached hotspots`);
         } else {
             showEmptyState();
         }

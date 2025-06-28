@@ -1,0 +1,91 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated_at": "2025-06-28T00:00:00Z",
+    "total_features": 5,
+    "region": "demo",
+    "source": "Demo Data - Click 🔄 Update for Real NASA Satellite Data"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-119.5, 36.8]
+      },
+      "properties": {
+        "lat": 36.8,
+        "lon": -119.5,
+        "brightness": 325.4,
+        "acq_datetime": "2025-06-28T12:30:00Z",
+        "confidence": "high",
+        "satellite": "DEMO",
+        "spread_radius_km": 4.2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.2, 34.1]
+      },
+      "properties": {
+        "lat": 34.1,
+        "lon": -118.2,
+        "brightness": 310.8,
+        "acq_datetime": "2025-06-28T11:45:00Z",
+        "confidence": "nominal",
+        "satellite": "DEMO",
+        "spread_radius_km": 3.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-121.0, 38.5]
+      },
+      "properties": {
+        "lat": 38.5,
+        "lon": -121.0,
+        "brightness": 340.2,
+        "acq_datetime": "2025-06-28T13:15:00Z",
+        "confidence": "high",
+        "satellite": "DEMO",
+        "spread_radius_km": 5.8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.1, 33.2]
+      },
+      "properties": {
+        "lat": 33.2,
+        "lon": -117.1,
+        "brightness": 298.5,
+        "acq_datetime": "2025-06-28T10:20:00Z",
+        "confidence": "low",
+        "satellite": "DEMO",
+        "spread_radius_km": 2.4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-120.8, 35.6]
+      },
+      "properties": {
+        "lat": 35.6,
+        "lon": -120.8,
+        "brightness": 315.9,
+        "acq_datetime": "2025-06-28T14:00:00Z",
+        "confidence": "nominal",
+        "satellite": "DEMO",
+        "spread_radius_km": 3.7
+      }
+    }
+  ]
+} 

@@ -1,7 +1,9 @@
 # Netlify deployment configuration for FireSight
+# Optimized for client-side wildfire data visualization
 
 [build]
-  publish = "."
+  publish = "src"
+  command = "echo 'No build step required - static files ready!'"
 
 [[headers]]
   for = "/*"
@@ -9,8 +11,11 @@
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
-
+    
+# Enable CORS for external API access
 [[headers]]
-  for = "/data/*"
+  for = "/*"
   [headers.values]
-    Cache-Control = "public, max-age=300" 
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type" 
