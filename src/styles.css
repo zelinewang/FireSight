@@ -261,8 +261,8 @@ body {
 }
 
 @keyframes gentle-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
 }
 
 .empty-content h2 {
@@ -570,85 +570,30 @@ body {
     animation: spin 1s ease-in-out infinite;
 }
 
-/* Stable Fire Markers - NO MOVEMENT */
+/* Simple Fire Markers */
 .fire-marker {
-    position: relative;
     cursor: pointer;
-}
-
-.fire-marker-inner {
-    position: relative;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.fire-pulse {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 87, 34, 0.4), transparent 70%);
-    animation: stable-pulse 2s infinite;
-    pointer-events: none;
-}
-
-.fire-icon {
     font-size: 20px;
-    position: relative;
-    z-index: 2;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-    /* NO transitions or transforms - completely stable */
+    text-align: center;
+    line-height: 1;
+    transition: all 0.3s ease;
+    user-select: none;
 }
 
-/* Intensity levels with different colors only */
-.fire-high .fire-pulse {
-    background: radial-gradient(circle, rgba(255, 61, 0, 0.6), transparent 70%);
-    animation: stable-pulse 1.5s infinite;
-}
-
-.fire-high .fire-icon {
+/* Intensity levels with different sizes and glows */
+.fire-high {
     font-size: 22px;
-    filter: drop-shadow(0 0 8px rgba(255, 61, 0, 0.8));
+    filter: drop-shadow(0 0 6px rgba(255, 61, 0, 0.8));
 }
 
-.fire-medium .fire-pulse {
-    background: radial-gradient(circle, rgba(255, 152, 0, 0.5), transparent 70%);
-    animation: stable-pulse 2s infinite;
-}
-
-.fire-medium .fire-icon {
+.fire-medium {
     font-size: 20px;
-    filter: drop-shadow(0 0 6px rgba(255, 152, 0, 0.7));
+    filter: drop-shadow(0 0 4px rgba(255, 152, 0, 0.7));
 }
 
-.fire-low .fire-pulse {
-    background: radial-gradient(circle, rgba(255, 193, 7, 0.4), transparent 70%);
-    animation: stable-pulse 2.5s infinite;
-}
-
-.fire-low .fire-icon {
+.fire-low {
     font-size: 18px;
-    filter: drop-shadow(0 0 4px rgba(255, 193, 7, 0.6));
-}
-
-/* Hover effects - ONLY brightness change, NO movement */
-.fire-hover .fire-icon {
-    filter: brightness(1.3) drop-shadow(0 0 12px rgba(255, 87, 34, 1));
-}
-
-.fire-hover .fire-pulse {
-    animation-duration: 0.8s;
-    opacity: 0.9;
-}
-
-/* Stable pulse animation - opacity only, NO scaling */
-@keyframes stable-pulse {
-    0% { opacity: 0.7; }
-    50% { opacity: 0.3; }
-    100% { opacity: 0.7; }
+    filter: drop-shadow(0 0 3px rgba(255, 193, 7, 0.6));
 }
 
 /* Improved prediction rings */

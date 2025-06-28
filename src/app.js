@@ -469,18 +469,13 @@ function renderHotspots() {
         const props = feature.properties;
         const coords = feature.geometry.coordinates;
         
-        // Create a professional-looking fire marker
+        // Create a simple, clickable fire marker
         const intensity = getIntensityLevel(props.brightness, props.confidence);
         const fireIcon = L.divIcon({
             className: `fire-marker fire-${intensity}`,
-            html: `
-                <div class="fire-marker-inner">
-                    <div class="fire-pulse"></div>
-                    <div class="fire-icon">🔥</div>
-                </div>
-            `,
-            iconSize: [32, 32],
-            iconAnchor: [16, 16]
+            html: `🔥`,
+            iconSize: [24, 24],
+            iconAnchor: [12, 12]
         });
         
         const leafletMarker = L.marker([coords[1], coords[0]], {
@@ -489,17 +484,38 @@ function renderHotspots() {
             zIndexOffset: 1000
         }).addTo(leafletMap);
         
-        // Add smooth hover effects
-        leafletMarker.on('click', () => showInfoPanel(props));
-        leafletMarker.on('mouseover', function() {
-            this._icon.classList.add('fire-hover');
+        // Add click and hover effects
+        leafletMarker.on('click', (e) => {
+            e.originalEvent?.stopPropagation();
+            showInfoPanel(props);
         });
+        
+        leafletMarker.on('mouseover', function() {
+            this._icon.style.transform = 'scale(1.2)';
+            this._icon.style.filter = 'brightness(1.3) drop-shadow(0 0 8px rgba(255, 87, 34, 0.8))';
+        });
+        
         leafletMarker.on('mouseout', function() {
-            this._icon.classList.remove('fire-hover');
+            this._icon.style.transform = 'scale(1)';
+            this._icon.style.filter = `brightness(1) ${getIntensityFilter(intensity)}`;
         });
         
         leafletLayers.push(leafletMarker);
     });
+}
+
+// Get filter effect for intensity
+function getIntensityFilter(intensity) {
+    switch (intensity) {
+        case 'high':
+            return 'drop-shadow(0 0 6px rgba(255, 61, 0, 0.8))';
+        case 'medium':
+            return 'drop-shadow(0 0 4px rgba(255, 152, 0, 0.7))';
+        case 'low':
+            return 'drop-shadow(0 0 3px rgba(255, 193, 7, 0.6))';
+        default:
+            return 'drop-shadow(0 0 4px rgba(255, 87, 34, 0.7))';
+    }
 }
 
 // Get intensity level based on brightness and confidence
