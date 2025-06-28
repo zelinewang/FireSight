@@ -11,10 +11,11 @@ const NASA_FIRMS_ENDPOINTS = {
     viirs: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/viirs-i/csv/VNP14IMGTDL_NRT_Global_24h.csv'
 };
 
-// CORS Proxy alternatives for API calls
+// CORS Proxy alternatives for API calls (ordered by reliability)
 const CORS_PROXIES = [
-    'https://api.allorigins.win/raw?url=',
     'https://corsproxy.io/?',
+    'https://api.allorigins.win/raw?url=',
+    '', // Try direct request (might work on some networks)
     'https://cors-anywhere.herokuapp.com/'
 ];
 
@@ -236,7 +237,7 @@ async function fetchFreshData() {
         
         // Check if we got any data at all
         if (allHotspots.length === 0) {
-            throw new Error('No wildfire data available from NASA satellites. This could be due to:\n• Network connectivity issues\n• NASA FIRMS API being temporarily down\n• No active wildfires in the selected region\n\nPlease try again in a few minutes.');
+            throw new Error('No wildfire data found. This could mean:\n• No active wildfires in ' + currentRegion.charAt(0).toUpperCase() + currentRegion.slice(1) + ' right now (good news!)\n• Network or API issues\n\nTry a different region or use demo data to test the app.');
         }
         
         // Filter by region and deduplicate
@@ -300,36 +301,61 @@ async function fetchSatelliteData(satellite) {
     for (let i = 0; i < CORS_PROXIES.length; i++) {
         try {
             const proxy = CORS_PROXIES[i];
-            debugLog(`Trying ${satellite.toUpperCase()} with proxy ${i + 1}/${CORS_PROXIES.length}`);
+            const proxyName = proxy === '' ? 'Direct' : proxy.split('//')[1].split('/')[0];
+            debugLog(`Trying ${satellite.toUpperCase()} with proxy ${i + 1}/${CORS_PROXIES.length}: ${proxyName}`);
             
-            const response = await fetch(proxy + encodeURIComponent(endpoint), {
+            const url = proxy === '' ? endpoint : proxy + encodeURIComponent(endpoint);
+            
+            // Add timeout to prevent hanging
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+            
+            const response = await fetch(url, {
                 headers: {
-                    'Accept': 'text/csv,text/plain,*/*'
-                }
+                    'Accept': 'text/csv,text/plain,*/*',
+                    'User-Agent': 'FireSight/1.0'
+                },
+                signal: controller.signal
             });
+            
+            clearTimeout(timeoutId);
+            
+            debugLog(`${satellite.toUpperCase()} proxy ${i + 1} response: ${response.status} ${response.statusText}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
             
             const csvText = await response.text();
+            debugLog(`${satellite.toUpperCase()} received ${csvText.length} characters`);
             
             // Validate we got CSV data
-            if (!csvText || csvText.length < 100 || !csvText.includes('latitude')) {
-                throw new Error('Invalid or empty CSV data received');
+            if (!csvText || csvText.length < 100) {
+                throw new Error(`Too short response: ${csvText.length} characters`);
+            }
+            
+            if (!csvText.includes('latitude') && !csvText.includes('lat')) {
+                throw new Error('Response doesn\'t contain expected CSV headers');
             }
             
             const features = parseCSVToGeoJSON(csvText, satellite);
-            debugLog(`Successfully fetched ${features.length} ${satellite.toUpperCase()} hotspots`);
+            debugLog(`✅ Successfully parsed ${features.length} ${satellite.toUpperCase()} hotspots`);
             return features;
             
         } catch (error) {
-            debugLog(`${satellite.toUpperCase()} proxy ${i + 1} failed: ${error.message}`);
+            if (error.name === 'AbortError') {
+                debugLog(`${satellite.toUpperCase()} proxy ${i + 1} timed out after 15 seconds`);
+            } else {
+                debugLog(`${satellite.toUpperCase()} proxy ${i + 1} failed: ${error.message}`);
+            }
             
             // If this was the last proxy, throw the error
             if (i === CORS_PROXIES.length - 1) {
-                throw new Error(`All proxies failed for ${satellite.toUpperCase()}: ${error.message}`);
+                throw new Error(`All ${CORS_PROXIES.length} proxies failed for ${satellite.toUpperCase()}. Last error: ${error.message}`);
             }
+            
+            // Wait a bit before trying next proxy
+            await new Promise(resolve => setTimeout(resolve, 1000));
         }
     }
     
@@ -722,6 +748,48 @@ function updateTimestamp(message = null) {
     if (element) {
         element.textContent = message || `Last updated: ${formatted} UTC`;
     }
+}
+
+// Load demo data as fallback when real data fails
+function loadDemoData() {
+    debugLog('Loading demo data...');
+    
+    const demoFeatures = [
+        {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [-119.5, 36.8] },
+            properties: {
+                lat: 36.8, lon: -119.5, brightness: 325.4,
+                acq_datetime: new Date().toISOString(),
+                confidence: 'high', satellite: 'DEMO', spread_radius_km: 4.2
+            }
+        },
+        {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [-118.2, 34.1] },
+            properties: {
+                lat: 34.1, lon: -118.2, brightness: 310.8,
+                acq_datetime: new Date().toISOString(),
+                confidence: 'nominal', satellite: 'DEMO', spread_radius_km: 3.1
+            }
+        },
+        {
+            type: 'Feature',
+            geometry: { type: 'Point', coordinates: [-121.0, 38.5] },
+            properties: {
+                lat: 38.5, lon: -121.0, brightness: 340.2,
+                acq_datetime: new Date().toISOString(),
+                confidence: 'high', satellite: 'DEMO', spread_radius_km: 5.8
+            }
+        }
+    ];
+    
+    hotspotData = demoFeatures;
+    renderData();
+    updateTimestamp('Demo data loaded - Click 🔄 Update to try real data again');
+    hideEmptyState();
+    document.getElementById('errorBanner').style.display = 'none';
+    debugLog(`Loaded ${demoFeatures.length} demo hotspots`);
 }
 
 // Load data function for backwards compatibility
