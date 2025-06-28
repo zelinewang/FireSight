@@ -1,0 +1,2072 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "generated_at": "2025-06-28T00:55:49.048882+00:00",
+    "total_features": 98,
+    "data_sources": [
+      "NASA FIRMS MODIS",
+      "NASA FIRMS VIIRS"
+    ],
+    "prediction_model": "6-hour empirical spread model"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.37681,
+        "lon": -116.08191,
+        "brightness": 304.09,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "low",
+        "satellite": "Terra",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 82.8,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08191,
+          32.37681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.37545,
+        "lon": -116.09261,
+        "brightness": 302.03,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "low",
+        "satellite": "Terra",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 82.8,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.09261,
+          32.37545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.42139,
+        "lon": -116.08997,
+        "brightness": 320.93,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 3.9,
+        "wind_speed_kph": 80.3,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08997,
+          32.42139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.42001,
+        "lon": -116.10067,
+        "brightness": 326.25,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 4.9,
+        "wind_speed_kph": 80.3,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.10067,
+          32.42001
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.41864,
+        "lon": -116.1113,
+        "brightness": 305.04,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Terra",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 80.3,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.1113,
+          32.41864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.50784,
+        "lon": -116.76607,
+        "brightness": 300.28,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "low",
+        "satellite": "Terra",
+        "spread_radius_km": 1.9,
+        "wind_speed_kph": 72.4,
+        "wind_direction": 279
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.76607,
+          32.50784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.75982,
+        "lon": -115.5948,
+        "brightness": 313.26,
+        "acq_datetime": "2025-06-26T04:49:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 2.2,
+        "wind_speed_kph": 24.8,
+        "wind_direction": 118
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.5948,
+          32.75982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 37.72339,
+        "lon": -118.97083,
+        "brightness": 304.32,
+        "acq_datetime": "2025-06-26T04:51:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Terra",
+        "spread_radius_km": 3.2,
+        "wind_speed_kph": 95.8,
+        "wind_direction": 247
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.97083,
+          37.72339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.43302,
+        "lon": -116.12009,
+        "brightness": 386.23,
+        "acq_datetime": "2025-06-26T16:52:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 15.0,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.12009,
+          32.43302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.431,
+        "lon": -116.09276,
+        "brightness": 421.54,
+        "acq_datetime": "2025-06-26T16:52:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 15.0,
+        "wind_speed_kph": 74.9,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.09276,
+          32.431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.42901,
+        "lon": -116.06587,
+        "brightness": 328.02,
+        "acq_datetime": "2025-06-26T16:52:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Terra",
+        "spread_radius_km": 4.1,
+        "wind_speed_kph": 84.2,
+        "wind_direction": 259
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.06587,
+          32.42901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.41938,
+        "lon": -116.12197,
+        "brightness": 349.79,
+        "acq_datetime": "2025-06-26T16:52:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 9.5,
+        "wind_speed_kph": 83.9,
+        "wind_direction": 257
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.12197,
+          32.41938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.42175,
+        "lon": -116.07354,
+        "brightness": 359.79,
+        "acq_datetime": "2025-06-26T16:52:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 11.5,
+        "wind_speed_kph": 84.2,
+        "wind_direction": 259
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.07354,
+          32.42175
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.90872,
+        "lon": -122.05909,
+        "brightness": 318.59,
+        "acq_datetime": "2025-06-26T18:28:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Terra",
+        "spread_radius_km": 1.5,
+        "wind_speed_kph": 19.8,
+        "wind_direction": 122
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.05909,
+          38.90872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.46115,
+        "lon": -121.86134,
+        "brightness": 315.61,
+        "acq_datetime": "2025-06-26T18:28:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Terra",
+        "spread_radius_km": 1.8,
+        "wind_speed_kph": 28.8,
+        "wind_direction": 190
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.86134,
+          38.46115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.4553,
+        "lon": -121.83492,
+        "brightness": 313.68,
+        "acq_datetime": "2025-06-26T18:28:00+00:00",
+        "confidence": "low",
+        "satellite": "Terra",
+        "spread_radius_km": 1.1,
+        "wind_speed_kph": 20,
+        "wind_direction": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.83492,
+          38.4553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.24558,
+        "lon": -121.38445,
+        "brightness": 312.43,
+        "acq_datetime": "2025-06-26T18:28:00+00:00",
+        "confidence": "low",
+        "satellite": "Terra",
+        "spread_radius_km": 1.6,
+        "wind_speed_kph": 54.0,
+        "wind_direction": 297
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.38445,
+          38.24558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.36857,
+        "lon": -116.10148,
+        "brightness": 391.88,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "high",
+        "satellite": "Aqua",
+        "spread_radius_km": 15.0,
+        "wind_speed_kph": 87.5,
+        "wind_direction": 243
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.10148,
+          32.36857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.40969,
+        "lon": -116.13085,
+        "brightness": 351.05,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "high",
+        "satellite": "Aqua",
+        "spread_radius_km": 9.8,
+        "wind_speed_kph": 83.9,
+        "wind_direction": 257
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.13085,
+          32.40969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.41703,
+        "lon": -116.14304,
+        "brightness": 332.42,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Aqua",
+        "spread_radius_km": 4.8,
+        "wind_speed_kph": 83.9,
+        "wind_direction": 257
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.14304,
+          32.41703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.43029,
+        "lon": -116.13099,
+        "brightness": 409.48,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "high",
+        "satellite": "Aqua",
+        "spread_radius_km": 15.0,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.13099,
+          32.43029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.42886,
+        "lon": -116.14143,
+        "brightness": 353.96,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "high",
+        "satellite": "Aqua",
+        "spread_radius_km": 10.1,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.14143,
+          32.42886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.36197,
+        "lon": -116.74638,
+        "brightness": 338.87,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Aqua",
+        "spread_radius_km": 5.2,
+        "wind_speed_kph": 69.1,
+        "wind_direction": 308
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.74638,
+          32.36197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 33.38726,
+        "lon": -117.39327,
+        "brightness": 330.75,
+        "acq_datetime": "2025-06-26T22:12:00+00:00",
+        "confidence": "low",
+        "satellite": "Aqua",
+        "spread_radius_km": 3.1,
+        "wind_speed_kph": 79.2,
+        "wind_direction": 238
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.39327,
+          33.38726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.45106,
+        "lon": -116.10022,
+        "brightness": 355.78,
+        "acq_datetime": "2025-06-27T17:32:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 10.0,
+        "wind_speed_kph": 74.9,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.10022,
+          32.45106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.44382,
+        "lon": -116.11298,
+        "brightness": 383.93,
+        "acq_datetime": "2025-06-27T17:32:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 15.0,
+        "wind_speed_kph": 74.9,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.11298,
+          32.44382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.43323,
+        "lon": -116.10421,
+        "brightness": 365.75,
+        "acq_datetime": "2025-06-27T17:32:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 11.8,
+        "wind_speed_kph": 74.9,
+        "wind_direction": 260
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.10421,
+          32.43323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.3818,
+        "lon": -116.07052,
+        "brightness": 402.75,
+        "acq_datetime": "2025-06-27T17:32:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 15.0,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 250
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.07052,
+          32.3818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.37194,
+        "lon": -116.06808,
+        "brightness": 332.39,
+        "acq_datetime": "2025-06-27T17:32:00+00:00",
+        "confidence": "nominal",
+        "satellite": "Terra",
+        "spread_radius_km": 4.8,
+        "wind_speed_kph": 85.7,
+        "wind_direction": 238
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.06808,
+          32.37194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.3647,
+        "lon": -116.08093,
+        "brightness": 343.64,
+        "acq_datetime": "2025-06-27T17:32:00+00:00",
+        "confidence": "high",
+        "satellite": "Terra",
+        "spread_radius_km": 8.6,
+        "wind_speed_kph": 87.5,
+        "wind_direction": 243
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08093,
+          32.3647
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 40.82372,
+        "lon": -114.2563,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:56:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 38.9,
+        "wind_direction": 274
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.2563,
+          40.82372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 40.94032,
+        "lon": -117.86156,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:56:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.2,
+        "wind_speed_kph": 95.8,
+        "wind_direction": 308
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.86156,
+          40.94032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 40.26813,
+        "lon": -122.13161,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 39.6,
+        "wind_direction": 232
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.13161,
+          40.26813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 39.61872,
+        "lon": -119.26321,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 37.8,
+        "wind_direction": 278
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.26321,
+          39.61872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 39.49266,
+        "lon": -119.6187,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.6,
+        "wind_speed_kph": 68.8,
+        "wind_direction": 272
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.6187,
+          39.49266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 39.65099,
+        "lon": -121.75101,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.9,
+        "wind_speed_kph": 34.9,
+        "wind_direction": 219
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.75101,
+          39.65099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.73447,
+        "lon": -116.44939,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.2,
+        "wind_speed_kph": 96.1,
+        "wind_direction": 194
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.44939,
+          38.73447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.51349,
+        "lon": -121.19443,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.3,
+        "wind_speed_kph": 52.6,
+        "wind_direction": 310
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.19443,
+          38.51349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.07257,
+        "lon": -122.14062,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.6,
+        "wind_speed_kph": 66.2,
+        "wind_direction": 268
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.14062,
+          38.07257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.00462,
+        "lon": -121.93661,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.6,
+        "wind_speed_kph": 64.1,
+        "wind_direction": 278
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.93661,
+          38.00462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 37.88382,
+        "lon": -121.18653,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.1,
+        "wind_speed_kph": 42.5,
+        "wind_direction": 322
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.18653,
+          37.88382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 37.51826,
+        "lon": -119.5949,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 38.9,
+        "wind_direction": 244
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.5949,
+          37.51826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 37.75659,
+        "lon": -121.66056,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 82.8,
+        "wind_direction": 270
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.66056,
+          37.75659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 36.35737,
+        "lon": -114.91274,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.5,
+        "wind_speed_kph": 63.4,
+        "wind_direction": 165
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.91274,
+          36.35737
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 37.45511,
+        "lon": -121.93417,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.4,
+        "wind_speed_kph": 56.2,
+        "wind_direction": 337
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.93417,
+          37.45511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 36.72082,
+        "lon": -118.96143,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.1,
+        "wind_speed_kph": 41.8,
+        "wind_direction": 277
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.96143,
+          36.72082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 36.59452,
+        "lon": -119.9957,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.3,
+        "wind_speed_kph": 10.4,
+        "wind_direction": 330
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.9957,
+          36.59452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 35.85957,
+        "lon": -118.6276,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.3,
+        "wind_speed_kph": 51.8,
+        "wind_direction": 307
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.6276,
+          35.85957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 35.12211,
+        "lon": -118.36934,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.2,
+        "wind_speed_kph": 95.0,
+        "wind_direction": 299
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.36934,
+          35.12211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.62193,
+        "lon": -117.10449,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.5,
+        "wind_speed_kph": 113.8,
+        "wind_direction": 221
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.10449,
+          34.62193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.60967,
+        "lon": -117.33694,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.3,
+        "wind_speed_kph": 103.3,
+        "wind_direction": 192
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.33694,
+          34.60967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.35479,
+        "lon": -116.85189,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.3,
+        "wind_speed_kph": 51.8,
+        "wind_direction": 32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.85189,
+          34.35479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.42976,
+        "lon": -118.64568,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 83.5,
+        "wind_direction": 263
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.64568,
+          34.42976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.14223,
+        "lon": -117.42978,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.4,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.42978,
+          34.14223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.33334,
+        "lon": -118.51837,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.7,
+        "wind_speed_kph": 72.0,
+        "wind_direction": 172
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.51837,
+          34.33334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.32094,
+        "lon": -118.51144,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.7,
+        "wind_speed_kph": 72.0,
+        "wind_direction": 172
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.51144,
+          34.32094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.08099,
+        "lon": -117.49853,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.6,
+        "wind_speed_kph": 67.7,
+        "wind_direction": 267
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.49853,
+          34.08099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.24466,
+        "lon": -118.38268,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.6,
+        "wind_speed_kph": 20,
+        "wind_direction": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.38268,
+          34.24466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.29126,
+        "lon": -118.80159,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.5,
+        "wind_speed_kph": 59.4,
+        "wind_direction": 281
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.80159,
+          34.29126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.1518,
+        "lon": -118.19209,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.1,
+        "wind_speed_kph": 45.0,
+        "wind_direction": 237
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.19209,
+          34.1518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 33.79475,
+        "lon": -117.47722,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T09:58:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.7,
+        "wind_speed_kph": 69.8,
+        "wind_direction": 345
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.47722,
+          33.79475
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.34532,
+        "lon": -114.9112,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T19:38:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.7,
+        "wind_direction": 179
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.9112,
+          32.34532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.4254,
+        "lon": -118.65633,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:18:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.1,
+        "wind_speed_kph": 90.7,
+        "wind_direction": 271
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.65633,
+          34.4254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 36.64501,
+        "lon": -121.242,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:18:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.5,
+        "wind_speed_kph": 63.7,
+        "wind_direction": 358
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.242,
+          36.64501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.37958,
+        "lon": -116.10188,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:18:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 82.8,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.10188,
+          32.37958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.38542,
+        "lon": -116.08708,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:18:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 82.8,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08708,
+          32.38542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.30404,
+        "lon": -122.56112,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:21:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.2,
+        "wind_speed_kph": 49.7,
+        "wind_direction": 276
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.56112,
+          38.30404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.44276,
+        "lon": -121.95303,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:21:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 37.8,
+        "wind_direction": 186
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.95303,
+          38.44276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.38251,
+        "lon": -116.11756,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:18:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.1,
+        "wind_speed_kph": 90.7,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.11756,
+          32.38251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.39519,
+        "lon": -116.12358,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:18:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.1,
+        "wind_speed_kph": 90.7,
+        "wind_direction": 253
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.12358,
+          32.39519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 39.04712,
+        "lon": -121.64336,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:21:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.6,
+        "wind_speed_kph": 23.4,
+        "wind_direction": 276
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.64336,
+          39.04712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 39.65214,
+        "lon": -121.85357,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-26T21:21:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.9,
+        "wind_speed_kph": 35.6,
+        "wind_direction": 213
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.85357,
+          39.65214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 40.25036,
+        "lon": -122.15039,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:37:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.9,
+        "wind_speed_kph": 34.9,
+        "wind_direction": 219
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.15039,
+          40.25036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 39.54413,
+        "lon": -122.02512,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:37:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.6,
+        "wind_speed_kph": 22.3,
+        "wind_direction": 216
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.02512,
+          39.54413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 38.59232,
+        "lon": -121.46949,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:37:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.0,
+        "wind_speed_kph": 38.2,
+        "wind_direction": 305
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.46949,
+          38.59232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 36.13303,
+        "lon": -115.04152,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.3,
+        "wind_speed_kph": 54.4,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.04152,
+          36.13303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 36.40215,
+        "lon": -118.94671,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.3,
+        "wind_speed_kph": 52.2,
+        "wind_direction": 277
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.94671,
+          36.40215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.82016,
+        "lon": -118.75079,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.2,
+        "wind_speed_kph": 98.3,
+        "wind_direction": 203
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.75079,
+          34.82016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 34.56805,
+        "lon": -118.15437,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 1.6,
+        "wind_speed_kph": 20,
+        "wind_direction": 0
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.15437,
+          34.56805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 33.87688,
+        "lon": -117.00018,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.7,
+        "wind_direction": 229
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.00018,
+          33.87688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.57914,
+        "lon": -114.84357,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.7,
+        "wind_speed_kph": 69.1,
+        "wind_direction": 188
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.84357,
+          32.57914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.85876,
+        "lon": -117.02962,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.3,
+        "wind_speed_kph": 54.4,
+        "wind_direction": 270
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.02962,
+          32.85876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.44296,
+        "lon": -115.33765,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 83.5,
+        "wind_direction": 167
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.33765,
+          32.44296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.28943,
+        "lon": -115.1133,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 168
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.1133,
+          32.28943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.50025,
+        "lon": -116.7917,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.5,
+        "wind_speed_kph": 63.7,
+        "wind_direction": 308
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.7917,
+          32.50025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.18615,
+        "lon": -114.98567,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.1,
+        "wind_speed_kph": 89.6,
+        "wind_direction": 169
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.98567,
+          32.18615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.49852,
+        "lon": -116.84346,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T09:39:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.6,
+        "wind_speed_kph": 68.4,
+        "wind_direction": 303
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.84346,
+          32.49852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.3926,
+        "lon": -116.06501,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 250
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.06501,
+          32.3926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.40124,
+        "lon": -116.05309,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 250
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.05309,
+          32.40124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.42933,
+        "lon": -116.08096,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.0,
+        "wind_speed_kph": 84.2,
+        "wind_direction": 259
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08096,
+          32.42933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.43742,
+        "lon": -116.07324,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.4,
+        "wind_direction": 261
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.07324,
+          32.43742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.44254,
+        "lon": -116.08779,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.4,
+        "wind_direction": 261
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08779,
+          32.44254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.44065,
+        "lon": -116.12831,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.0,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.12831,
+          32.44065
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.45064,
+        "lon": -116.08006,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.9,
+        "wind_speed_kph": 81.4,
+        "wind_direction": 261
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.08006,
+          32.45064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.45635,
+        "lon": -116.09019,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 3.0,
+        "wind_speed_kph": 86.8,
+        "wind_direction": 261
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.09019,
+          32.45635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.45216,
+        "lon": -116.12137,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.8,
+        "wind_speed_kph": 78.1,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.12137,
+          32.45216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 32.45741,
+        "lon": -116.10861,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.8,
+        "wind_speed_kph": 78.1,
+        "wind_direction": 258
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.10861,
+          32.45741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "lat": 33.44262,
+        "lon": -117.4267,
+        "brightness": 300.0,
+        "acq_datetime": "2025-06-27T20:57:00+00:00",
+        "confidence": "nominal",
+        "satellite": "VIIRS",
+        "spread_radius_km": 2.5,
+        "wind_speed_kph": 63.4,
+        "wind_direction": 301
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.4267,
+          33.44262
+        ]
+      }
+    }
+  ]
+}
