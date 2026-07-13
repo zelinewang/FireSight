@@ -1,0 +1,45 @@
+name: Bug report
+description: Report a problem with the FireSight map or data
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        FireSight runs entirely in the browser against live NASA FIRMS feeds.
+        Because the data is live, please note roughly when you saw the issue and
+        which feed was involved — a hotspot that's gone by tomorrow is hard to
+        chase down later.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Expected versus actual. A screenshot of the map helps a lot.
+    validations:
+      required: true
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where did you see it?
+      options:
+        - Local (`python3 -m http.server`)
+        - Deployed site (Netlify)
+    validations:
+      required: true
+  - type: dropdown
+    id: feed
+    attributes:
+      label: Which data feed?
+      options:
+        - MODIS C6.1
+        - VIIRS NOAA-20 C2
+        - Both / not sure
+        - Not data-related (UI / map)
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Browser and OS
+      placeholder: "Firefox 130 on Windows 11"
+    validations:
+      required: true
