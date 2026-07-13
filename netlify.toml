@@ -5,6 +5,14 @@
   publish = "src"
   command = "echo 'No build step required - static files ready!'"
 
+# Keep browser requests same-origin on Netlify. The upstream paths are
+# published by NASA FIRMS's official active-fire file catalog.
+[[redirects]]
+  from = "/firms/*"
+  to = "https://firms.modaps.eosdis.nasa.gov/data/active_fire/:splat"
+  status = 200
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,4 +26,4 @@
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, OPTIONS"
-    Access-Control-Allow-Headers = "Content-Type" 
+    Access-Control-Allow-Headers = "Content-Type"

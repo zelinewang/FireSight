@@ -1,5 +1,8 @@
 # 🔥 FireSight Real-Time Testing - Quick Start Guide
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 Get started with real-time wildfire data testing in under 5 minutes!
 
 ## Prerequisites
@@ -217,4 +220,4 @@ Then open **http://localhost:8000** and start exploring real-time wildfire data!
 
 ---
 
-**Need Help?** Check the detailed [Real-Time Testing Plan](real_time_testing_plan.md) for comprehensive testing procedures. 
+**Need Help?** Check the detailed [Real-Time Testing Plan](real_time_testing_plan.md) for comprehensive testing procedures.

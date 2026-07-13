@@ -1,5 +1,8 @@
 # 🔥 FireSight Real-Time Testing Status Report
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 **Date**: June 28, 2025  
 **Version**: v1.1  
 **Testing Status**: ✅ **SUCCESSFULLY IMPLEMENTED**  
@@ -244,4 +247,4 @@ The low current fire activity actually validates that the system correctly handl
 ---
 
 *Report generated: 2025-06-28 00:17 UTC*  
-*Next review: After production deployment* 
+*Next review: After production deployment*

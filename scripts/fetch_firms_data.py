@@ -16,7 +16,7 @@ from urllib.parse import urljoin
 
 # Real-time data sources - Updated to use public NASA FIRMS endpoints
 FIRMS_MODIS_GLOBAL_URL = "https://firms.modaps.eosdis.nasa.gov/data/active_fire/modis-c6.1/csv/MODIS_C6_1_Global_24h.csv"
-FIRMS_VIIRS_GLOBAL_URL = "https://firms.modaps.eosdis.nasa.gov/data/active_fire/suomi-npp-viirs-c2/csv/SUOMI_VIIRS_C2_Global_24h.csv"
+FIRMS_VIIRS_GLOBAL_URL = "https://firms.modaps.eosdis.nasa.gov/data/active_fire/noaa-20-viirs-c2/csv/J1_VIIRS_C2_Global_24h.csv"
 
 # Regional testing endpoints for focused testing
 REGIONAL_ENDPOINTS = {
@@ -140,7 +140,7 @@ def parse_firms_csv(csv_text, region='global'):
             # Extract required fields using correct column names
             lat = float(row.get('latitude', 0))
             lon = float(row.get('longitude', 0))
-            brightness = float(row.get('brightness', 300))
+            brightness = float(row.get('brightness') or row.get('bright_ti4', 300))
             
             # Filter by geographic bounds
             if not (bounds['lat_min'] <= lat <= bounds['lat_max'] and 
@@ -179,8 +179,14 @@ def parse_firms_csv(csv_text, region='global'):
             
             # Map satellite names
             satellite_raw = row.get('satellite', 'Unknown')
-            satellite_map = {'T': 'Terra', 'A': 'Aqua', 'N': 'VIIRS'}
-            satellite = satellite_map.get(satellite_raw, f'MODIS-{satellite_raw}')
+            satellite_map = {
+                'T': 'Terra',
+                'A': 'Aqua',
+                'N': 'VIIRS',
+                'N20': 'NOAA-20 VIIRS',
+                'N21': 'NOAA-21 VIIRS'
+            }
+            satellite = satellite_map.get(satellite_raw, satellite_raw or 'Unknown')
             
             hotspots.append({
                 'lat': lat,
@@ -409,4 +415,4 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main() 
+    main()

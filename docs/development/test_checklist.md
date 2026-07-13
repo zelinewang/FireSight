@@ -1,5 +1,8 @@
 # FireSight Local Testing Checklist
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 ## 🚀 Quick Start
 1. Open terminal in project directory
 2. Run: `./start.sh` or `python -m http.server 8000`
@@ -78,4 +81,4 @@
 - Works in all modern browsers
 - Have backup screenshots ready
 - Test on projector/external display before presentation
-- Much more reliable without 3D dependencies 
+- Much more reliable without 3D dependencies

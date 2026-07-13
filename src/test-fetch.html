@@ -11,30 +11,43 @@
     <script>
         const NASA_FIRMS_ENDPOINTS = {
             modis: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/modis-c6.1/csv/MODIS_C6_1_Global_24h.csv',
-            viirs: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/viirs-i/csv/VNP14IMGTDL_NRT_Global_24h.csv'
+            viirs: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/noaa-20-viirs-c2/csv/J1_VIIRS_C2_Global_24h.csv'
         };
 
-        const CORS_PROXIES = [
-            'https://corsproxy.io/?',
-            'https://api.allorigins.win/raw?url=',
-            'https://cors-anywhere.herokuapp.com/'
+        const DATA_ROUTES = [
+            {
+                name: 'Netlify same-origin proxy',
+                resolve: endpoint => endpoint.replace(
+                    'https://firms.modaps.eosdis.nasa.gov/data/active_fire/',
+                    '/firms/'
+                )
+            },
+            {
+                name: 'AllOrigins public proxy',
+                resolve: endpoint => `https://api.allorigins.win/raw?url=${encodeURIComponent(endpoint)}`
+            },
+            {
+                name: 'Direct NASA',
+                resolve: endpoint => endpoint
+            }
         ];
 
         async function testFetch() {
             const status = document.getElementById('status');
             const results = document.getElementById('results');
             
-            status.innerHTML = 'Testing CORS proxies...';
+            status.innerHTML = 'Testing data routes...';
             
-            for (let i = 0; i < CORS_PROXIES.length; i++) {
-                const proxy = CORS_PROXIES[i];
+            for (let i = 0; i < DATA_ROUTES.length; i++) {
+                const route = DATA_ROUTES[i];
                 const endpoint = NASA_FIRMS_ENDPOINTS.modis;
+                const url = route.resolve(endpoint);
                 
                 try {
-                    status.innerHTML = `Testing proxy ${i + 1}: ${proxy}`;
-                    console.log(`Testing: ${proxy}${encodeURIComponent(endpoint)}`);
+                    status.innerHTML = `Testing route ${i + 1}: ${route.name}`;
+                    console.log(`Testing: ${url}`);
                     
-                    const response = await fetch(proxy + encodeURIComponent(endpoint), {
+                    const response = await fetch(url, {
                         headers: {
                             'Accept': 'text/csv,text/plain,*/*'
                         }
@@ -54,7 +67,7 @@
                     if (text.length > 100 && text.includes('latitude')) {
                         const lines = text.split('\n');
                         results.innerHTML = `
-                            <h3>✅ Success with proxy ${i + 1}: ${proxy}</h3>
+                            <h3>✅ Success with route ${i + 1}: ${route.name}</h3>
                             <p>Data length: ${text.length} characters</p>
                             <p>Number of lines: ${lines.length}</p>
                             <p>First few lines:</p>
@@ -67,16 +80,16 @@
                     }
                     
                 } catch (error) {
-                    console.error(`Proxy ${i + 1} failed:`, error);
-                    results.innerHTML += `<p>❌ Proxy ${i + 1} failed: ${error.message}</p>`;
+                    console.error(`Route ${i + 1} failed:`, error);
+                    results.innerHTML += `<p>❌ Route ${i + 1} failed: ${error.message}</p>`;
                 }
             }
             
-            status.innerHTML = '❌ All proxies failed!';
+            status.innerHTML = '❌ All data routes failed!';
         }
         
         // Start test
         testFetch();
     </script>
 </body>
-</html> 
+</html>

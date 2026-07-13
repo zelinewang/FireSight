@@ -1,5 +1,8 @@
 # FireSight Presentation Slide Deck Specification
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 ## Presentation Metadata
 - **Title**: FireSight - Real-Time Wildfire Intelligence & Predictive Simulation
 - **Duration**: 5-7 minutes
@@ -111,4 +114,4 @@
 2. Show how FireSight solves real problems simply
 3. Emphasize speed of development (2 hours)
 4. Live demo is crucial - practice beforehand
-5. End with vision and clear next steps 
+5. End with vision and clear next steps
