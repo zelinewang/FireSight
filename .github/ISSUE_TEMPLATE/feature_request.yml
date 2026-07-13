@@ -1,0 +1,24 @@
+name: Feature request
+description: Suggest an improvement to FireSight
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What would make FireSight more useful for exploring current fire activity?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What you'd like. Note if it would add a build step or an API key — the app is deliberately zero-setup.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
