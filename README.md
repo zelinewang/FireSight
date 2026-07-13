@@ -2,6 +2,7 @@
 
 **Turn NASA's near-real-time satellite fire detections into an interactive map you can explore in the browser — no build step or API key.**
 
+[![Validate static app](https://github.com/zelinewang/FireSight/actions/workflows/ci.yml/badge.svg)](https://github.com/zelinewang/FireSight/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Data: NASA FIRMS](https://img.shields.io/badge/data-NASA%20FIRMS-orange)](https://firms.modaps.eosdis.nasa.gov/)
 [![Map: Leaflet](https://img.shields.io/badge/map-Leaflet-brightgreen)](https://leafletjs.com/)
