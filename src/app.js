@@ -5,18 +5,29 @@ let leafletLayers = [];
 let autoRefreshInterval = null;
 let currentRegion = 'california';
 
-// NASA FIRMS API Configuration
+// NASA FIRMS active-fire files published by the official file catalog:
+// https://firms.modaps.eosdis.nasa.gov/api/active_fire_files/all?format=json
+const NASA_FIRMS_DATA_PREFIX = 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/';
 const NASA_FIRMS_ENDPOINTS = {
     modis: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/modis-c6.1/csv/MODIS_C6_1_Global_24h.csv',
-    viirs: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/viirs-i/csv/VNP14IMGTDL_NRT_Global_24h.csv'
+    viirs: 'https://firms.modaps.eosdis.nasa.gov/data/active_fire/noaa-20-viirs-c2/csv/J1_VIIRS_C2_Global_24h.csv'
 };
 
-// CORS Proxy alternatives for API calls (ordered by reliability)
-const CORS_PROXIES = [
-    'https://corsproxy.io/?',
-    'https://api.allorigins.win/raw?url=',
-    '', // Try direct request (might work on some networks)
-    'https://cors-anywhere.herokuapp.com/'
+// Netlify rewrites /firms/* to NASA as a same-origin request. The public
+// AllOrigins route and direct NASA request are best-effort local fallbacks.
+const DATA_ROUTES = [
+    {
+        name: 'Netlify same-origin proxy',
+        resolve: endpoint => endpoint.replace(NASA_FIRMS_DATA_PREFIX, '/firms/')
+    },
+    {
+        name: 'AllOrigins public proxy',
+        resolve: endpoint => `https://api.allorigins.win/raw?url=${encodeURIComponent(endpoint)}`
+    },
+    {
+        name: 'Direct NASA',
+        resolve: endpoint => endpoint
+    }
 ];
 
 // Regional bounds for filtering
@@ -196,6 +207,10 @@ async function fetchFreshData() {
         updateLoadingStatus('Connecting to NASA FIRMS...');
         
         let allHotspots = [];
+        const feedStatus = {
+            modis: 'unavailable',
+            viirs: 'unavailable'
+        };
         
         // Initialize connection
         updateProgress(10, 'Connecting to NASA FIRMS...');
@@ -206,6 +221,7 @@ async function fetchFreshData() {
         updateLoadingStatus('Fetching MODIS satellite data...');
         try {
             const modisData = await fetchSatelliteData('modis');
+            feedStatus.modis = modisData.length > 0 ? `loaded ${modisData.length}` : 'available, no rows';
             if (modisData.length > 0) {
                 allHotspots = allHotspots.concat(modisData);
                 debugLog(`Found ${modisData.length} MODIS hotspots`);
@@ -214,6 +230,7 @@ async function fetchFreshData() {
                 updateProgress(40, 'No MODIS data available');
             }
         } catch (error) {
+            feedStatus.modis = `unavailable (${error.message})`;
             debugLog(`MODIS fetch failed: ${error.message}`);
             updateProgress(40, 'MODIS fetch failed - continuing...');
         }
@@ -223,6 +240,7 @@ async function fetchFreshData() {
         updateLoadingStatus('Fetching VIIRS satellite data...');
         try {
             const viirsData = await fetchSatelliteData('viirs');
+            feedStatus.viirs = viirsData.length > 0 ? `loaded ${viirsData.length}` : 'available, no rows';
             if (viirsData.length > 0) {
                 allHotspots = allHotspots.concat(viirsData);
                 debugLog(`Found ${viirsData.length} VIIRS hotspots`);
@@ -231,13 +249,18 @@ async function fetchFreshData() {
                 updateProgress(60, 'No VIIRS data available');
             }
         } catch (error) {
+            feedStatus.viirs = `unavailable (${error.message})`;
             debugLog(`VIIRS fetch failed: ${error.message}`);
             updateProgress(60, 'VIIRS fetch failed - continuing...');
         }
         
         // Check if we got any data at all
         if (allHotspots.length === 0) {
-            throw new Error('No wildfire data found. This could mean:\n• No active wildfires in ' + currentRegion.charAt(0).toUpperCase() + currentRegion.slice(1) + ' right now (good news!)\n• Network or API issues\n\nTry a different region or use demo data to test the app.');
+            throw new Error(
+                'No wildfire rows were available. This may mean there are no current detections in the selected region or the feeds could not be reached. ' +
+                `Feed status: MODIS ${feedStatus.modis}; VIIRS ${feedStatus.viirs}. ` +
+                'Try a different region or load demo data.'
+            );
         }
         
         // Filter by region and deduplicate
@@ -262,7 +285,8 @@ async function fetchFreshData() {
                 generated_at: new Date().toISOString(),
                 total_features: hotspotData.length,
                 region: currentRegion,
-                source: 'NASA FIRMS Real-time'
+                source: 'NASA FIRMS near-real-time',
+                feeds: feedStatus
             },
             features: hotspotData
         };
@@ -272,7 +296,17 @@ async function fetchFreshData() {
         // Render the data
         updateProgress(95, 'Rendering wildfire data...');
         renderData();
-        updateTimestamp('Just updated from NASA satellites');
+        const unavailableFeeds = Object.entries(feedStatus)
+            .filter(([, status]) => status.startsWith('unavailable'))
+            .map(([feed]) => feed.toUpperCase());
+        const loadedFeeds = Object.entries(feedStatus)
+            .filter(([, status]) => !status.startsWith('unavailable'))
+            .map(([feed]) => feed.toUpperCase());
+        const sourceSummary = loadedFeeds.join(' + ') || 'NASA FIRMS';
+        const degradedSummary = unavailableFeeds.length > 0
+            ? `; unavailable: ${unavailableFeeds.join(', ')}`
+            : '';
+        updateTimestamp(`Updated from ${sourceSummary}${degradedSummary}`);
         
         // Complete
         updateProgress(100, 'Complete!');
@@ -293,18 +327,19 @@ async function fetchFreshData() {
     }
 }
 
-// Fetch data from specific satellite with multiple CORS proxy fallbacks
+// Fetch one satellite feed independently so a secondary-feed failure does not
+// block data from the other source.
 async function fetchSatelliteData(satellite) {
     const endpoint = NASA_FIRMS_ENDPOINTS[satellite];
+    if (!endpoint) {
+        throw new Error(`Unknown satellite feed: ${satellite}`);
+    }
     
-    // Try each CORS proxy until one works
-    for (let i = 0; i < CORS_PROXIES.length; i++) {
+    for (let i = 0; i < DATA_ROUTES.length; i++) {
         try {
-            const proxy = CORS_PROXIES[i];
-            const proxyName = proxy === '' ? 'Direct' : proxy.split('//')[1].split('/')[0];
-            debugLog(`Trying ${satellite.toUpperCase()} with proxy ${i + 1}/${CORS_PROXIES.length}: ${proxyName}`);
-            
-            const url = proxy === '' ? endpoint : proxy + encodeURIComponent(endpoint);
+            const route = DATA_ROUTES[i];
+            const url = route.resolve(endpoint);
+            debugLog(`Trying ${satellite.toUpperCase()} route ${i + 1}/${DATA_ROUTES.length}: ${route.name}`);
             
             // Add timeout to prevent hanging
             const controller = new AbortController();
@@ -312,15 +347,14 @@ async function fetchSatelliteData(satellite) {
             
             const response = await fetch(url, {
                 headers: {
-                    'Accept': 'text/csv,text/plain,*/*',
-                    'User-Agent': 'FireSight/1.0'
+                    'Accept': 'text/csv,text/plain,*/*'
                 },
                 signal: controller.signal
             });
             
             clearTimeout(timeoutId);
             
-            debugLog(`${satellite.toUpperCase()} proxy ${i + 1} response: ${response.status} ${response.statusText}`);
+            debugLog(`${satellite.toUpperCase()} route ${i + 1} response: ${response.status} ${response.statusText}`);
             
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
@@ -330,11 +364,12 @@ async function fetchSatelliteData(satellite) {
             debugLog(`${satellite.toUpperCase()} received ${csvText.length} characters`);
             
             // Validate we got CSV data
-            if (!csvText || csvText.length < 100) {
-                throw new Error(`Too short response: ${csvText.length} characters`);
+            if (!csvText) {
+                throw new Error('Empty response');
             }
             
-            if (!csvText.includes('latitude') && !csvText.includes('lat')) {
+            const header = csvText.split('\n', 1)[0].toLowerCase();
+            if (!header.includes('latitude') || !header.includes('longitude')) {
                 throw new Error('Response doesn\'t contain expected CSV headers');
             }
             
@@ -344,14 +379,13 @@ async function fetchSatelliteData(satellite) {
             
         } catch (error) {
             if (error.name === 'AbortError') {
-                debugLog(`${satellite.toUpperCase()} proxy ${i + 1} timed out after 15 seconds`);
+                debugLog(`${satellite.toUpperCase()} route ${i + 1} timed out after 15 seconds`);
             } else {
-                debugLog(`${satellite.toUpperCase()} proxy ${i + 1} failed: ${error.message}`);
+                debugLog(`${satellite.toUpperCase()} route ${i + 1} failed: ${error.message}`);
             }
             
-            // If this was the last proxy, throw the error
-            if (i === CORS_PROXIES.length - 1) {
-                throw new Error(`All ${CORS_PROXIES.length} proxies failed for ${satellite.toUpperCase()}. Last error: ${error.message}`);
+            if (i === DATA_ROUTES.length - 1) {
+                throw new Error(`All ${DATA_ROUTES.length} routes failed for ${satellite.toUpperCase()}. Last error: ${error.message}`);
             }
             
             // Wait a bit before trying next proxy
@@ -365,19 +399,20 @@ async function fetchSatelliteData(satellite) {
 // Parse CSV data to GeoJSON format
 function parseCSVToGeoJSON(csvText, satellite) {
     const lines = csvText.trim().split('\n');
-    const headers = lines[0].split(',');
+    const headers = lines[0].split(',').map(header => header.trim());
     const features = [];
     
     for (let i = 1; i < lines.length; i++) {
         const values = lines[i].split(',');
         if (values.length < headers.length) continue;
+        const row = Object.fromEntries(headers.map((header, index) => [header, values[index]]));
         
-        const lat = parseFloat(values[0]);
-        const lon = parseFloat(values[1]);
-        const brightness = parseFloat(values[2]);
-        const acq_date = values[5];
-        const acq_time = values[6];
-        const confidence = satellite === 'modis' ? values[8] : values[9];
+        const lat = parseFloat(row.latitude);
+        const lon = parseFloat(row.longitude);
+        const brightness = parseFloat(row.brightness || row.bright_ti4);
+        const acq_date = row.acq_date;
+        const acq_time = row.acq_time;
+        const confidence = normalizeConfidence(row.confidence);
         
         if (isNaN(lat) || isNaN(lon) || isNaN(brightness)) continue;
         
@@ -403,6 +438,22 @@ function parseCSVToGeoJSON(csvText, satellite) {
     }
     
     return features;
+}
+
+function normalizeConfidence(value) {
+    const normalized = String(value || '').trim().toLowerCase();
+    const numericValue = Number(normalized);
+
+    if (normalized !== '' && Number.isFinite(numericValue)) {
+        if (numericValue >= 80) return 'high';
+        if (numericValue >= 50) return 'nominal';
+        return 'low';
+    }
+
+    if (normalized === 'h') return 'high';
+    if (normalized === 'n') return 'nominal';
+    if (normalized === 'l') return 'low';
+    return normalized || 'unknown';
 }
 
 // Filter hotspots by region
@@ -812,4 +863,4 @@ window.addEventListener('load', () => {
             leafletMap.flyTo([lat, lon], 10, { duration: 2 });
         }
     }
-}); 
+});

@@ -1,5 +1,8 @@
 # 🚀 FireSight Deployment Guide
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 ## Netlify Drag & Drop (Recommended for Hackathon)
 
 ### Step 1: Prepare Files
@@ -72,4 +75,4 @@ For real deployment beyond hackathon:
 - Enable Netlify Analytics
 - Set up error monitoring
 - Add PWA manifest for mobile
-- Implement real FIRMS API integration 
+- Implement real FIRMS API integration

@@ -1,5 +1,8 @@
 # FireSight Real-Time Testing Plan
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 ## Overview
 This document outlines the comprehensive testing strategy for FireSight with real-time NASA FIRMS satellite data integration. The testing covers multiple scenarios, regions, and edge cases to ensure robust performance in production.
 
@@ -288,4 +291,4 @@ The application is ready for production deployment when:
 
 **Last Updated**: Current Version 1.1
 **Testing Period**: Continuous during development
-**Next Review**: After production deployment 
+**Next Review**: After production deployment

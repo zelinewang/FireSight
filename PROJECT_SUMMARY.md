@@ -1,5 +1,8 @@
 # 🎯 FireSight Project Organization & Achievement Summary
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](README.md) for current behavior.
+
 **Date**: June 28, 2025  
 **Version**: v1.1 Production Ready  
 **Status**: ✅ **SUCCESSFULLY ORGANIZED & TESTED**
@@ -432,4 +435,4 @@ def test_data_persistence():
 
 *Comprehensive development completed: June 28, 2025*  
 *Status: Production deployment ready with full documentation*  
-*Next milestone: Live deployment and AI enhancement roadmap execution* 
+*Next milestone: Live deployment and AI enhancement roadmap execution*

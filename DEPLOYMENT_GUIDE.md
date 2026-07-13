@@ -1,5 +1,8 @@
 # 🚀 FireSight Production Deployment Guide
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](README.md) for current behavior.
+
 **From Development to Live Production in Under 10 Minutes**
 
 ---
@@ -365,4 +368,4 @@ Your FireSight application is now live and ready to serve real-time wildfire int
 ---
 
 *Deployment guide last updated: June 28, 2025*  
-*FireSight version: 1.1 Production Ready* 
+*FireSight version: 1.1 Production Ready*

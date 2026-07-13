@@ -1,5 +1,8 @@
 # FireSight v1.1 Technical Decisions & Implementation Guide
 
+> [!WARNING]
+> **Historical hackathon artifact.** This document is retained for project history, not current product verification. The browser app uses independently fetched NASA MODIS and NOAA-20 VIIRS C2 feeds, does not use Open-Meteo, and shows an illustrative—not operational—spread heuristic. It is not production-ready. See [README.md](../../README.md) for current behavior.
+
 This document resolves all technical uncertainties marked as "(不确定)" in DevDoc_v1.1.md and provides implementation guidance for the development team.
 
 ---

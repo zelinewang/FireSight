@@ -1,7 +1,7 @@
 {
   "name": "firesight",
   "version": "1.1.0",
-  "description": "Real-Time Wildfire Intelligence & Predictive Simulation",
+  "description": "Near-real-time NASA wildfire detections with an illustrative spread visualization",
   "main": "src/index.html",
   "scripts": {
     "start": "python -m http.server 8000",
@@ -20,10 +20,10 @@
     "test-australia": "npm run fetch-australia && npm start",
     "monitor": "while true; do npm run fetch-data; sleep 900; done"
   },
-  "keywords": ["wildfire", "cesium", "leaflet", "gis", "visualization", "real-time", "nasa-firms"],
+  "keywords": ["wildfire", "leaflet", "gis", "visualization", "near-real-time", "nasa-firms"],
   "author": "FireSight Team",
   "license": "MIT",
   "engines": {
     "python": ">=3.7"
   }
-} 
+}
